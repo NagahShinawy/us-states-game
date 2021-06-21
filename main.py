@@ -8,12 +8,6 @@ from state import State
 MAX_STATES = 5
 
 
-def generate_report(lines):
-    with open("./data/report.txt", 'w') as f:
-        for line in lines:
-            f.write(line)
-
-
 def main():
     lines = []
     tries = 1
@@ -31,7 +25,7 @@ def main():
         line = f"{answer}[{success_fail}]\n"
         lines.append(line)
         tries += 1
-    generate_report(lines)
+    State.export_to_txt()
     turtle.mainloop()  # keeping screen open
 
 
