@@ -11,7 +11,7 @@ FONT = ("Courier", 9, "bold")
 
 class State(Turtle):
     states_df = pd.read_csv(STATES)
-    states = []
+    successful_guess_states = []
     STATESPATH = "./data/report.txt"
 
     def __init__(self, *args, **kwargs):
@@ -32,9 +32,9 @@ class State(Turtle):
             logger.info("successfully guess '%s'", answer)
             self.coordinates = st["x"].iloc[0], st["y"].iloc[0]
             self.name = answer
-            self.states.append(self.name)
-            return self.coordinates
+            self.successful_guess_states.append(self.name)
         logger.info("bad answer for state '%s'", answer)
+        return self.coordinates
 
     @classmethod
     def get_states(cls):
@@ -45,5 +45,5 @@ class State(Turtle):
     @classmethod
     def export_to_txt(cls):
         with open(cls.STATESPATH, 'w') as f:
-            for state in cls.states:
+            for state in cls.successful_guess_states:
                 f.write(state + "\n")
