@@ -16,7 +16,7 @@ class State(Turtle):
     STATES_REPORT_PATH = "./data/report.txt"
     states_df = pd.read_csv(STATESPATH)
     successful_guess_states = []
-    MAX_STATES = len(states_df["state"])
+    NUMBER_OF_STATES = len(states_df["state"])
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

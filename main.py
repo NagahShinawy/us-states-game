@@ -11,7 +11,7 @@ def main():
     score = 0
     screen = setup()
     state = State()
-    while tries <= State.MAX_STATES:
+    while tries <= State.NUMBER_OF_STATES:
         answer = get_state_answer(screen, score)
         coors = state.check_coordinates(answer)
         if coors:

@@ -8,7 +8,7 @@ IMG = "./data/states.gif"  # turtle only works in gif format
 TITLEBAR_ICON = "./data/states.ico"
 SCREEN_TITLE = "U.S. States Game"
 ASK_FOR_STATE = "What's another states name?"
-INPUT_TITLE = "Guess The State {answer}/{max_answers}"
+INPUT_TITLE = "Guess The State {score}/{max_answers}"
 MAX_ANSWERS = 50
 
 
@@ -24,9 +24,9 @@ def setup():
     return screen
 
 
-def get_state_answer(screen: turtle.Screen, answer):
+def get_state_answer(screen: turtle.Screen, score):
     state = screen.textinput(
-        title=INPUT_TITLE.format(answer=answer, max_answers=MAX_ANSWERS),
+        title=INPUT_TITLE.format(score=score, max_answers=MAX_ANSWERS),
         prompt=ASK_FOR_STATE,
     )
     if state:
