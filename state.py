@@ -33,8 +33,8 @@ class State(Turtle):
             self.coordinates = st["x"].iloc[0], st["y"].iloc[0]
             self.name = answer
             self.successful_guess_states.append(self.name)
+            return self.coordinates
         logger.info("bad answer for state '%s'", answer)
-        return self.coordinates
 
     @classmethod
     def get_states(cls):
