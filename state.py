@@ -41,8 +41,10 @@ class State(Turtle):
         st = self.states_df[self.states_df["state"] == answer]
         if st.shape[0] > 0:
             logger.info("successfully guess '%s'", answer)
-            self.coordinates = int(st["x"]), st["y"].iloc[
-                0]  # all work ==> int(st["x"]), st["x"].item(), st["x"].iloc[0]
+            self.coordinates = (
+                int(st["x"]),
+                st["y"].iloc[0],
+            )  # all work ==> int(st["x"]), st["x"].item(), st["x"].iloc[0]
             self.name = answer  # st["state"].item()
             self.successful_guess_states.append(self.name)
             return self.coordinates
@@ -56,24 +58,26 @@ class State(Turtle):
 
     @classmethod
     def generate_report(cls):
-        with open(cls.STATES_REPORT_PATH, 'w') as file:
+        with open(cls.STATES_REPORT_PATH, "w") as file:
             file.write(cls.HEADLINE.replace(cls.REPLACE_ME, cls.SUCCESS))
-            cls.update_report_with_sates(file, cls.successful_guess_states)
+            cls.update_report_with_states(file, cls.successful_guess_states)
             file.write(cls.HEADLINE.replace(cls.REPLACE_ME, cls.MISSED))
-            cls.update_report_with_sates(file, cls.get_missed_states())
+            cls.update_report_with_states(file, cls.get_missed_states())
 
     @classmethod
-    def update_report_with_sates(cls, file, states: list):
+    def update_report_with_states(cls, file, states: list):
         for state in states:
             file.write(state + "\n")
 
     @classmethod
     def get_missed_states(cls):
-        cls.missed_states = [state for state in cls.states if state not in cls.successful_guess_states]
+        cls.missed_states = [
+            state for state in cls.states if state not in cls.successful_guess_states
+        ]
         return cls.missed_states
 
     @classmethod
     def export_missed_states_to_csv(cls):
         missed_states: list = cls.get_missed_states()
-        missed_states_df = cls.states_df[cls.states_df['state'].isin(missed_states)]
+        missed_states_df = cls.states_df[cls.states_df["state"].isin(missed_states)]
         missed_states_df.to_csv(cls.LEARN)

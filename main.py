@@ -3,6 +3,7 @@ created by Nagaj at 20/06/2021
 """
 from ui import setup, get_state_answer, logger
 from state import State
+
 EXIT = "Exit"
 
 
