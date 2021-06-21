@@ -16,6 +16,7 @@ def main():
         answer = get_state_answer(screen, score)
         if answer == EXIT:
             logger.info("Stopping app using '%s' after '%d' tries", EXIT, tries - 1)
+            State.init_missed_states()
             break
         coors = state.check_coordinates(answer)
         if coors:

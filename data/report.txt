@@ -1,8 +1,8 @@
 ######################### SUCCESS GUESS #########################
-Texas
 New York
-######################### MISSED STATES #########################
+Texas
 Alabama
+######################### MISSED STATES #########################
 Alaska
 Arizona
 Arkansas
