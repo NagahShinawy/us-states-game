@@ -5,15 +5,13 @@ import turtle
 from ui import setup, get_state_answer
 from state import State
 
-MAX_STATES = 50
-
 
 def main():
     tries = 1
     score = 0
     screen = setup()
     state = State()
-    while tries <= MAX_STATES:
+    while tries <= State.MAX_STATES:
         answer = get_state_answer(screen, score)
         coors = state.check_coordinates(answer)
         if coors:
