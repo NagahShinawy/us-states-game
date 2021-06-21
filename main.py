@@ -22,6 +22,7 @@ def main():
             score += 1
         tries += 1
     State.generate_report()
+    State.export_missed_states_to_csv()
     # turtle.mainloop()  # keeping screen open
     # screen.exitonclick()
 

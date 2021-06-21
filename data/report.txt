@@ -1,7 +1,6 @@
 ######################### SUCCESS GUESS #########################
 Texas
 New York
-Kansas
 ######################### MISSED STATES #########################
 Alabama
 Alaska
@@ -18,6 +17,7 @@ Idaho
 Illinois
 Indiana
 Iowa
+Kansas
 Kentucky
 Louisiana
 Maine

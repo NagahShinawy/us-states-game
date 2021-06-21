@@ -2,6 +2,7 @@
 created by Nagaj at 21/06/2021
 """
 from turtle import Turtle
+
 import pandas as pd
 
 from logs import logger
@@ -13,6 +14,7 @@ FONT = ("Courier", 9, "bold")
 class State(Turtle):
     STATESPATH = "./data/states.csv"
     STATES_REPORT_PATH = "./data/report.txt"
+    LEARN = "./data/lean.csv"
     SUCCESS = "SUCCESS GUESS"
     MISSED = "MISSED STATES"
     REPLACE_ME = "REPLACE-ME"
@@ -69,3 +71,9 @@ class State(Turtle):
     def get_missed_states(cls):
         cls.missed_states = [state for state in cls.states if state not in cls.successful_guess_states]
         return cls.missed_states
+
+    @classmethod
+    def export_missed_states_to_csv(cls):
+        missed_states: list = cls.get_missed_states()
+        missed_states_df = cls.states_df[cls.states_df['state'].isin(missed_states)]
+        missed_states_df.to_csv(cls.LEARN)
