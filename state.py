@@ -76,7 +76,6 @@ class State(Turtle):
         ]
 
     @classmethod
-    def export_missed_states_to_csv(cls):
-        missed_states: list = cls.missed_states
-        missed_states_df = cls.states_df[cls.states_df["state"].isin(missed_states)]
+    def states_to_learn(cls):
+        missed_states_df = cls.states_df[cls.states_df["state"].isin(cls.missed_states)]
         missed_states_df.to_csv(cls.LEARN)
