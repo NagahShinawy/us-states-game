@@ -67,5 +67,5 @@ class State(Turtle):
 
     @classmethod
     def get_missed_states(cls):
-        cls.missed_states = [st for st in cls.states if st not in cls.successful_guess_states]
+        cls.missed_states = [state for state in cls.states if state not in cls.successful_guess_states]
         return cls.missed_states

@@ -1,7 +1,6 @@
 """
 created by Nagaj at 20/06/2021
 """
-import turtle
 from ui import setup, get_state_answer, logger
 from state import State
 EXIT = "Exit"
@@ -23,7 +22,8 @@ def main():
             score += 1
         tries += 1
     State.generate_report()
-    turtle.mainloop()  # keeping screen open
+    # turtle.mainloop()  # keeping screen open
+    # screen.exitonclick()
 
 
 if __name__ == "__main__":
