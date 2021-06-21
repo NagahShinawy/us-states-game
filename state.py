@@ -14,7 +14,7 @@ FONT = ("Courier", 9, "bold")
 class State(Turtle):
     STATESPATH = "./data/states.csv"
     STATES_REPORT_PATH = "./data/report.txt"
-    LEARN = "./data/lean.csv"
+    MISSED_STATES_PATH = "./data/states_to_lean.csv"
     SUCCESS = "SUCCESS GUESS"
     MISSED = "MISSED STATES"
     REPLACE_ME = "REPLACE-ME"
@@ -78,4 +78,4 @@ class State(Turtle):
     @classmethod
     def states_to_learn(cls):
         missed_states_df = cls.states_df[cls.states_df["state"].isin(cls.missed_states)]
-        missed_states_df.to_csv(cls.LEARN)
+        missed_states_df.to_csv(cls.MISSED_STATES_PATH)
