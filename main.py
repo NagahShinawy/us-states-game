@@ -2,8 +2,9 @@
 created by Nagaj at 20/06/2021
 """
 import turtle
-from ui import setup, get_state_answer
+from ui import setup, get_state_answer, logger
 from state import State
+EXIT = "Exit"
 
 
 def main():
@@ -13,12 +14,15 @@ def main():
     state = State()
     while tries <= State.NUMBER_OF_STATES:
         answer = get_state_answer(screen, score)
+        if answer == EXIT:
+            logger.info("Stopping app using '%s' after '%d' tries", EXIT, tries - 1)
+            break
         coors = state.check_coordinates(answer)
         if coors:
             state.add_to_screen()
             score += 1
         tries += 1
-    State.export_to_txt()
+    State.generate_report()
     turtle.mainloop()  # keeping screen open
 
 
