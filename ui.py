@@ -13,6 +13,10 @@ MAX_ANSWERS = 50
 
 
 def setup():
+    """
+    setup screen with us states
+    :return:
+    """
     logger.info("starting setup screen")
     screen = turtle.Screen()
     screen.title(SCREEN_TITLE)
@@ -25,6 +29,12 @@ def setup():
 
 
 def get_state_answer(screen: turtle.Screen, score):
+    """
+    get state answer from user
+    :param screen: screen that contains map of us
+    :param score: user score that will be updated after success state answer
+    :return: answer with titlecase if not None
+    """
     state = screen.textinput(
         title=INPUT_TITLE.format(score=score, max_answers=MAX_ANSWERS),
         prompt=ASK_FOR_STATE,

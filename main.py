@@ -8,6 +8,10 @@ EXIT = "Exit"
 
 
 def main():
+    """
+    entry point of game
+    :return:
+    """
     tries = 1
     score = 0
     screen = setup()
