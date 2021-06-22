@@ -4,9 +4,8 @@ created by Nagaj at 21/06/2021
 from turtle import Turtle
 from typing import Optional
 import pandas as pd
-
+from prettytable import PrettyTable
 from logs import logger
-
 STATES = "./data/states.csv"
 FONT = ("Courier", 9, "bold")
 
@@ -27,6 +26,7 @@ class State(Turtle):
     states = []
     missed_states = []
     successful_guess_states = []
+    successful_rows = []
     NUMBER_OF_STATES = len(states_df["state"])
 
     def __init__(self, *args, **kwargs):
@@ -36,6 +36,17 @@ class State(Turtle):
         self.coordinates = None
         self.name = None
         State.states = self.get_states()
+
+    @classmethod
+    def unpack_row(cls, row):
+        return row["state"].iloc[0], row["x"].iloc[0], row["y"].iloc[0]
+
+    @classmethod
+    def to_prettytable(cls):
+        table = PrettyTable()
+        table.field_names = ["State", "X", "Y"]
+        table.add_rows(cls.successful_rows)
+        print(table)
 
     def add_to_screen(self) -> None:
         """
@@ -61,6 +72,7 @@ class State(Turtle):
             )  # all work ==> int(st["x"]), st["x"].item(), st["x"].iloc[0]
             self.name = answer  # st["state"].item()
             self.successful_guess_states.append(self.name)
+            self.successful_rows.append(self.unpack_row(state))
             return self.coordinates
         logger.info("bad answer for state '%s'", answer)
         return None
@@ -72,7 +84,7 @@ class State(Turtle):
         :return: states list
         """
         states = cls.states_df["state"].tolist()
-        logger.info("get states %s", cls.states)
+        logger.info("get states %s", states)
         return states
 
     @classmethod
@@ -102,7 +114,7 @@ class State(Turtle):
         :param states: list of states that write to file, (success or missed)
         :return:
         """
-        file.write(title + "\n")
+        file.write(title)
         for state in states:
             file.write(state + "\n")
 

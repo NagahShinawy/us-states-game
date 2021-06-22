@@ -27,6 +27,7 @@ def main():
             state.add_to_screen()
             score += 1
         tries += 1
+    State.to_prettytable()
     State.generate_report()
     State.states_to_learn()
     # turtle.mainloop()  # keeping screen open
