@@ -1,5 +1,4 @@
 ######################### SUCCESS GUESS #########################
-New York
 Texas
 ######################### MISSED STATES #########################
 Alabama
@@ -33,6 +32,7 @@ Nevada
 New Hampshire
 New Jersey
 New Mexico
+New York
 North Carolina
 North Dakota
 Ohio

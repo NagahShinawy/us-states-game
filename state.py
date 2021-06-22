@@ -27,6 +27,7 @@ class State(Turtle):
     missed_states = []
     successful_guess_states = []
     successful_rows = []
+    state_fields = ["State", "X", "Y"]
     NUMBER_OF_STATES = len(states_df["state"])
 
     def __init__(self, *args, **kwargs):
@@ -44,7 +45,7 @@ class State(Turtle):
     @classmethod
     def to_prettytable(cls):
         table = PrettyTable()
-        table.field_names = ["State", "X", "Y"]
+        table.field_names = cls.state_fields
         table.add_rows(cls.successful_rows)
         print(table)
 
