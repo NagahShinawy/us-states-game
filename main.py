@@ -3,6 +3,8 @@ created by Nagaj at 20/06/2021
 """
 from ui import setup, get_state_answer, logger
 from state import State
+import csv
+
 
 EXIT = "Exit"
 
@@ -35,4 +37,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    with open("./data/states.csv") as f:
+        states = csv.DictReader(f)  # csv.DictReader type
+        print(type(states))
+        names = [row["state"] for row in states]
+        print(len(names) == 50)
+        print(names)
+
